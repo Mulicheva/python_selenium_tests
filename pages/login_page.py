@@ -1,4 +1,4 @@
-from lib2to3.pgen2 import driver
+import time
 
 from .base_page import BasePage
 
@@ -24,3 +24,15 @@ class LoginPage(BasePage):
         # реализуйте проверку, что есть форма регистрации на странице
         assert self.is_element_present(*LoginPageLocators.REGISTER_FORM), "Register form is not presented"
         #assert True
+
+    def register_new_user(self, email, password):
+        login_username = self.browser.find_element(*LoginPageLocators.LOGIN_USERNAME)
+        time.sleep(10)
+        login_username.text = email
+        time.sleep(10)
+        login_password = self.browser.find_element(*LoginPageLocators.LOGIN_PASSWORD)
+        login_password.text = password
+        login_submit = self.browser.find_element(*LoginPageLocators.LOGIN_SUBMIT)
+
+        time.sleep(10)
+        login_submit.click()
