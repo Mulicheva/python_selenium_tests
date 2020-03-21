@@ -26,13 +26,7 @@ class LoginPage(BasePage):
         #assert True
 
     def register_new_user(self, email, password):
-        login_username = self.browser.find_element(*LoginPageLocators.LOGIN_USERNAME)
-        time.sleep(10)
-        login_username.text = email
-        time.sleep(10)
-        login_password = self.browser.find_element(*LoginPageLocators.LOGIN_PASSWORD)
-        login_password.text = password
-        login_submit = self.browser.find_element(*LoginPageLocators.LOGIN_SUBMIT)
-
-        time.sleep(10)
-        login_submit.click()
+        self.browser.find_element(*LoginPageLocators.REGISTER_EMAIL_ADDRESS).send_keys(email)
+        self.browser.find_element(*LoginPageLocators.REGISTER_PASSWORD).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.REGISTER_CONFIRM_PASSWORD).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.REGISTER_BUTTON).click()

@@ -20,7 +20,8 @@ def browser(request):
         print("\nstart browser for test..")
         options = Options()
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-        browser = webdriver.Chrome("C:/chromedriver/chromedriver.exe", options=options)
+        #browser = webdriver.Chrome("C:/chromedriver/chromedriver.exe", options=options)
+        browser = webdriver.Chrome(options=options)
     else:
         print("\nBrowser <browser_name> still is not implemented")
     yield browser
